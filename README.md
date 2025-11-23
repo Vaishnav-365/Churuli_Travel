@@ -1,11 +1,5 @@
 # Churuli
 
-![Churuli](https://world-voyage.vercel.app/logo.png)
-
-## Live Demo
-
-🌐 [https://world-voyage.vercel.app/](https://world-voyage.vercel.app/)
-
 ## Overview
 
 Churuli is a comprehensive travel planning and tracking application that helps users plan, visualize, and share their adventures around the world. With an intuitive interface and powerful features, Churuli makes travel planning seamless and enjoyable.
@@ -57,8 +51,8 @@ Churuli is a comprehensive travel planning and tracking application that helps u
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/world-voyage.git
-cd world-voyage
+git clone https://github.com/yourusername/churuli_travel.git
+cd churuli_travel
 ```
 
 2. Install dependencies:
