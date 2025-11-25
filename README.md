@@ -1,11 +1,5 @@
 # Churuli
 
-![Churuli](https://world-voyage.vercel.app/logo.png)
-
-## Live Demo
-
-🌐 [https://world-voyage.vercel.app/](https://world-voyage.vercel.app/)
-
 ## Overview
 
 Churuli is a comprehensive travel planning and tracking application that helps users plan, visualize, and share their adventures around the world. With an intuitive interface and powerful features, Churuli makes travel planning seamless and enjoyable.
@@ -57,8 +51,8 @@ Churuli is a comprehensive travel planning and tracking application that helps u
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/world-voyage.git
-cd world-voyage
+git clone https://github.com/yourusername/churuli_travel.git
+cd churuli_travel
 ```
 
 2. Install dependencies:
@@ -120,37 +114,3 @@ The application is deployed on Vercel. To deploy your own instance:
 2. Connect your repository to Vercel
 3. Configure the environment variables in the Vercel dashboard
 4. Deploy
-
-## Google OAuth Configuration
-
-To set up Google OAuth for authentication:
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Navigate to "APIs & Services" > "Credentials"
-4. Create an OAuth 2.0 Client ID
-5. Add the following authorized redirect URIs:
-   - For development: `http://localhost:3000/api/auth/callback/google`
-   - For production: `https://your-domain.com/api/auth/callback/google`
-
-## License
-
-MIT
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Acknowledgements
-
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn UI](https://ui.shadcn.com/)
-- [NextAuth.js](https://next-auth.js.org/)
-- [Prisma](https://www.prisma.io/)
-- [React Globe.gl](https://github.com/vasturiano/react-globe.gl)
-
----
-
-Built with 🔥 by [Efty34]
