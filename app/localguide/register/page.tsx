@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import LocationAutocomplete from "@/components/LocationAutocomplete";
 
 export default function RegisterGuide() {
   const [email, setEmail] = useState("");
@@ -12,13 +13,14 @@ export default function RegisterGuide() {
   const [otp, setOtp] = useState("");
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    experience: "",
-    languages: "",
-    bio: "",
-  });
+  name: "",
+  email: "",
+  phone: "",
+  experience: "",
+  languages: "",
+  bio: "",
+  location: "",   
+});
 
   async function sendOTP() {
     const res = await fetch("/api/guide/send-otp", {
@@ -45,17 +47,18 @@ export default function RegisterGuide() {
   }
 
   async function finalSubmit() {
-    const res = await fetch("/api/guide/register", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        name: form.name,
-        phone: form.phone,
-        experience: form.experience,
-        languages: form.languages.split(","),
-        bio: form.bio,
-      }),
-    });
+  const res = await fetch("/api/guide/register", {
+    method: "POST",
+    body: JSON.stringify({
+      email,
+      name: form.name,
+      phone: form.phone,
+      experience: Number(form.experience),
+      languages: form.languages.split(","),
+      bio: form.bio,
+      location: form.location,   
+    }),
+  });
 
     if (res.ok) alert("Registered successfully!");
     else alert("Error registering user");
@@ -113,6 +116,21 @@ export default function RegisterGuide() {
                 value={form.phone ?? ""}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
               />
+              <LocationAutocomplete
+		  onSelect={(loc) => {
+		    setForm({
+		      ...form,
+		      location: loc.name, 
+		    });
+		  }}
+		/>
+
+		<Input
+		  className="mt-2"
+		  placeholder="Selected Location"
+		  value={form.location}
+		  readOnly
+		/>
               <Input
                 placeholder="Experience (years)"
                 value={form.experience ?? ""}

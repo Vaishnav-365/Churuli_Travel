@@ -251,7 +251,7 @@ export function TourPlanDisplay({ tourPlan }: TourPlanDisplayProps) {
         {tourPlan.itinerarySuggestion?.map((day) => (
           <Card key={day.day} className="bg-white/70 backdrop-blur-md border border-blue-100/50 hover:shadow-lg transition-all duration-300 hover:scale-105">
         <CardHeader className="pb-2">
-          <CardTitle className="text-lg text-blue-800">{day.day}</CardTitle>
+          <CardTitle className="text-lg text-blue-800">Day {day.day}</CardTitle>
         </CardHeader>
 
         <CardContent>
