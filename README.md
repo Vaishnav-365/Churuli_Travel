@@ -51,7 +51,7 @@ Churuli is a comprehensive travel planning and tracking application that helps u
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/churuli_travel.git
+https://github.com/Vaishnav-365/Churuli_Travel.git
 cd churuli_travel
 ```
 
