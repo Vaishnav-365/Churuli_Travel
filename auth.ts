@@ -5,30 +5,54 @@ import { prisma } from "./lib/prisma";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+
+  session: {
+    strategy: "jwt", // 🔐 Explicit and secure
+    maxAge: 60 * 60 * 24, // 1 day
+  },
+
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+
   callbacks: {
-  async session({ session, user }) {
-    if (!session.user) return session;
 
-    session.user.id = user.id;
+    // ✅ Control who can sign in
+    async signIn({ profile }) {
+      if (!profile?.email) return false;
 
-    try {
-      const guide = await prisma.localGuide.findUnique({
-        where: { userId: user.id },
-      });
-      session.user.isGuide = !!guide;
-    } catch (err) {
-      console.error("Guide lookup failed in session callback:", err);
-      session.user.isGuide = false;
-    }
+      // Optional: restrict domain
+      // if (!profile.email.endsWith("@yourcollege.edu")) return false;
 
-    return session;
+      return true;
+    },
+
+    // ✅ Store data in JWT
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+
+        const guide = await prisma.localGuide.findUnique({
+          where: { userId: user.id },
+        });
+
+        token.isGuide = !!guide;
+      }
+      return token;
+    },
+
+    // ✅ Expose safe data to frontend
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.isGuide = token.isGuide as boolean;
+      }
+      return session;
+    },
   },
-},
+
   basePath: "/api/auth",
 });
