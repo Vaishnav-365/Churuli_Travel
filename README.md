@@ -52,7 +52,7 @@ Churuli is a comprehensive travel planning and tracking application that helps u
 
 ```bash
 https://github.com/Vaishnav-365/Churuli_Travel.git
-cd churuli_travel
+cd Churuli_Travel
 ```
 
 2. Install dependencies:
